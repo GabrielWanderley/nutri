@@ -1,0 +1,45 @@
+.ContainerBarInfo{
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding-top: 100px;
+
+   .contentBarInfo{
+      max-width: 415px;
+      margin-right: 50px;
+    h3{
+        font-family: 'Playfair Display', serif;    
+        font-size: 50px;
+        margin-bottom: 20px;
+        color: #E00056;
+    }
+    p{
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+    }
+
+    button{
+        all: initial;
+        background-color: none;
+        font-family: 'Playfair Display', serif;    
+        font-size: 30px;
+        border-bottom: 1px solid #E00056;
+        margin-top: 40px;
+        color: black;
+        width: 270px;
+        cursor: pointer;
+    }
+   }
+   .imageOneBarInfo{
+    float: right;
+    margin-bottom: 100px;
+     .barInfoImageTwo{
+    width: 420px;
+    height: 471px;
+    margin-left: 50px;
+
+ }
+   }
+
+}

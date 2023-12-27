@@ -1,0 +1,37 @@
+.ContainerImageStart{
+background-image: url('../assets/healthy-organic-tofu-rice-buddha-bowl-with-veggies.jpg');
+width: 100%;
+height: 800px;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+display: flex;
+justify-content: center; 
+align-items: center; 
+.contentStart{
+    color: white;
+    max-width: 500px;
+    h1{
+            font-family: 'Playfair Display', serif;    
+            font-size: 50px;
+            margin-bottom: 20px;
+    }
+    p{
+        font-family: 'Roboto', sans-serif;
+    }
+    span{
+        color: #E00056;
+    }
+    button{
+        all: initial;
+        background-color: none;
+        font-family: 'Playfair Display', serif;    
+        font-size: 30px;
+        border-bottom: 1px solid #E00056;
+        margin-top: 40px;
+        color: white;
+        width: 150px;
+        cursor: pointer;
+    }
+}
+}

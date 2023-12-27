@@ -1,0 +1,51 @@
+.containerCaloryCalculator{
+    background-color: #1C000B;
+    display: flex;
+    justify-content: center;
+    min-height:600px ;
+
+.contentCaloryCalculator{
+     max-width: 1000px;
+     align-items: center;
+     text-align: center;
+
+     h1{
+        color: white;
+        font-size: 30px;
+        font-family: 'Playfair Display', serif;   
+        margin-top: 20px;
+     }
+     span{
+       color: #E00056;
+    }
+    .searchCalory{
+        background-color: white;
+        margin-top: 50px;
+        height: 140px;
+        width: 900px;
+        text-align: center;
+        border-radius: 10px;
+        justify-content: center;
+        h3{
+            padding-top: 10px;
+            font-family: 'Playfair Display', serif;    
+            font-size: 22px;
+        }
+        input{
+            border: 1px solid #E00056;
+            width: 287px;
+            height: 58px;
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+      
+        }
+
+        .placeholder{
+          text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 17px;
+        }
+
+    }
+}
+}
