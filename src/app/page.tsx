@@ -1,3 +1,6 @@
+"use client"
+
+
 import BarInfo from "@/components/BarInfo/BarInfo";
 import CaloryCalculator from "@/components/CaloryCalculator/caloryCalculator";
 import Start from "@/components/Start/start";
