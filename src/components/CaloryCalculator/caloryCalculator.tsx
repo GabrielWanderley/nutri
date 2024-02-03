@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import '@/styles/CaloryCalculator.scss';
 import { App_Id, Api_Key } from '../../../apiconfig.js';
-import Image from 'next/image'
-import feij from '@/assets/top-view-brazilian-food-with-copy-space.jpg'
+import Image from 'next/image';
 
+import { useTbmContext } from '@/context/tbmContext.jsx';
 
 export default function CaloryCalculator() {
   const [foodQuery, setFoodQuery] = useState<string>('');
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [selectedFoods, setSelectedFoods] = useState<any[]>([]);
+  const [totalCalories, setTotalCalories] = useState<number>(0);
+
+  const { tbmResult } = useTbmContext();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,26 +63,33 @@ export default function CaloryCalculator() {
 
   const translateNutritionData = async (data: any) => {
     const translationMap: Record<string, string> = {
-      item_name: 'Nome do Item',
+      food_name: 'Nome do Item',
       brand_name: 'Marca',
       nf_calories: 'Calorias',
       serving_weight_grams: 'Peso do Alimento (g)',
-      // Adicione outros rótulos e traduções conforme necessário
     };
-
+  
     const translatedData: Record<string, any> = {};
-
+  
     if (data.foods && data.foods.length > 0) {
       const food = data.foods[0];
-
+  
       for (const key in food) {
         if (food.hasOwnProperty(key) && translationMap[key]) {
           const translatedValue = await translateText(food[key]);
           translatedData[translationMap[key]] = translatedValue;
         }
       }
+      // Adicione a tradução para a propriedade da imagem
+      if (food.photo && food.photo.highres) {
+        const translatedImgValue = await translateText(food.photo.highres);
+        translatedData.photo = {
+          ...food.photo,
+          highres: translatedImgValue,
+        };
+      }
     }
-
+  
     return translatedData;
   };
 
@@ -87,7 +99,7 @@ export default function CaloryCalculator() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Ocp-Apim-Subscription-Key': 'SUA_CHAVE_DE_API_AQUI',
+          'Ocp-Apim-Subscription-Key': Api_Key,
         },
         body: JSON.stringify([{ text }]),
       });
@@ -108,6 +120,33 @@ export default function CaloryCalculator() {
     }
   };
 
+  const handleAddFood = () => {
+    if (result) {
+      const newSelectedFoods = [...selectedFoods, result];
+      const newTotalCalories = newSelectedFoods.reduce((total, food) => total + food.Calorias, 0);
+      setSelectedFoods(newSelectedFoods);
+      setTotalCalories(newTotalCalories);
+    }
+    
+  };
+
+  const handleRemoveFood = (index: number) => {
+    const updatedFoods = [...selectedFoods];
+    const removedFood = updatedFoods.splice(index, 1)[0];
+    setSelectedFoods(updatedFoods);
+    setTotalCalories((prevTotal) => prevTotal - removedFood.Calorias);
+    if(selectedFoods.length <= 1) {
+      setTotalCalories(0);
+  };
+}
+
+    const resultadoHTML = tbmResult !== null ? (
+      <h1 dangerouslySetInnerHTML={{ __html: `você pode consumir: <span>${tbmResult}</span> calorias por dia.` }} />
+    ) : (
+      'Ainda não calculado.'
+    );
+  
+
   return (
     <div className="containerCaloryCalculator">
       <div className="contentCaloryCalculator">
@@ -123,42 +162,55 @@ export default function CaloryCalculator() {
             value={foodQuery}
             onChange={(e) => setFoodQuery(e.target.value)}
           />
+
           {result && (
             <div className='searchResult'>
               {result.photo && (
                 <>
-                  <Image src={result.photo.highres} alt="Imagem em alta resolução do alimento" className='searchImage' />
+                <Image
+                  src={result.photo.highres}
+                  alt="Imagem em alta resolução do alimento"
+                  width={200}  // Adicione os atributos width e height
+                  height={200}
+                  className='searchImage'
+                />
                 </>
               )}
                   <h3>{result['Nome do Item']}</h3>
                   <p>peso : {result['Peso do Alimento (g)']}</p>
                   <p>calorias: {result['Calorias']}</p>
-                  <button>adicionar</button>
+                  <button onClick={handleAddFood}>adicionar</button>
             </div>
           )}
-
+          
         </div>
-
-        <h1>voce pode consulmir <span>2000</span> calorias diraias, se quiser imagrecer</h1>
+        <div className='h1results'>
+                  <h1>{resultadoHTML}</h1>
+        </div>
         <div className='contentDadosSearchCalory'>
-          
-          <div className='ItemDadosSearch'>
-          <Image src={feij} alt='feijão' className='contentDadosSearchImage'/>
-          
-          <h1>banana</h1>
-          <p>peso: <span>200g</span></p>
-          <p>calorias: <span>300</span></p> 
-          <button>remove</button>
-          </div>
-
+        <div className='itensDisplay'>
+          {selectedFoods.map((food, index) => (
+            <div className='ItemDadosSearch' key={index}>
+              {food.photo && (
+                <>
+                  <Image src={food.photo.highres} alt={`Imagem em alta resolução de ${food['Nome do Item']}`} 
+                                    width={200}  // Adicione os atributos width e height
+                                    height={200}
+                  className='contentDadosSearchImage' />
+                </>
+              )}
+              <h1>{food['Nome do Item']}</h1>
+              <p>peso: <span>{food['Peso do Alimento (g)']}</span></p>
+              <p>calorias: <span>{food['Calorias']}</span></p> 
+              <button onClick={() => handleRemoveFood(index)}>remover</button>
+            </div>
+          ))}
+         </div>
           <div className='lastDadosCalory'>
-           <h1> Sua refeição tem <span>3000</span> calorias </h1>
+            <h1> Sua refeição tem <span>{totalCalories}</span> calorias </h1>
           </div>
-
         </div>
       </div>
     </div>
   );
 }
-
-

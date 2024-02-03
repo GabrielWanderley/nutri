@@ -1,8 +1,20 @@
 .containerCaloryCalculator{
-    background-color: #1C000B;
+    background-color: black;
     display: flex;
     justify-content: center;
-    min-height:600px ;
+    min-height:600px;
+
+    button{
+        all: initial;
+        background-color: none;
+        font-family: 'Playfair Display', serif;    
+        font-size: 17px;
+        border-bottom: 1px solid #E00056;
+        margin-bottom: 20px;
+        color: white;
+        width: 70px;
+        cursor: pointer;
+    }
 
 .contentCaloryCalculator{
      max-width: 1000px;
@@ -26,6 +38,8 @@
         text-align: center;
         border-radius: 10px;
         justify-content: center;
+        box-shadow: 5px 5px 10px 2px rgba(255, 255, 255, 0.199);
+
 
         h3{
             padding-top: 10px;
@@ -40,6 +54,9 @@
             font-family: 'Roboto', sans-serif;
             margin-bottom: 30px;
         }
+        button{
+            color: black;
+          }
 
         .placeholder{
           text-align: center;
@@ -77,19 +94,29 @@
         justify-content: center;
         text-align: center;
         max-width: 900px;
-        margin: 0 auto; 
+        margin: 0 auto;            
+        margin-top: 100px;
+       .itensDisplay{
+
+        max-width:250px;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Especifica 3 colunas com largura igual */
+        column-gap: 4rem;
+        row-gap: 7rem;
 
         .ItemDadosSearch{
-            
-            margin-top: 100px;
+         min-height: 370px;
+        border: 1px solid #E00056 ;
+        border-radius: 10px;
             .contentDadosSearchImage{
             height: 250px;
             width: 250px;
-            float: left;
+            border-radius: 10px;
            }            
            h1{
                 color: #E00056;
-                margin-right: 455px;
+                
                 margin-bottom: 10px;
                 
               }      
@@ -98,29 +125,103 @@
                 font-family: 'Roboto', sans-serif;
                 color: white;
                 margin-bottom: 10px;
-                margin-right: 455px;
+
               }
-              button{
-                margin-right: 455px;
-              }
+
         }
 
+
+        }        
         .lastDadosCalory{
             text-align: center;
             justify-content: center;
             border-radius: 10px;
-            background-color: white;
-            width: 500px;
+            background-color: white;            
+            min-width: 500px;
+            max-width: 600px;
             height: 70px;
             margin: 0 auto;
-            margin-top: 300px;
-             
+            margin-top: 200px;
+            margin-bottom: 100px;
+            box-shadow: 5px 5px 10px 2px rgba(255, 255, 255, 0.199);
+
 
             h1{
                 padding-top: 15px;
                 color: black;
             }
-        }
     }
+}
+}
+
+@media (max-width:767px){
+
+    .h1results{
+        max-width: 350px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-left: 280px;
+    }
+    .contentCaloryCalculator{
+    .contentDadosSearchCalory{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        max-width: 230px;
+        margin: 0 auto;            
+        margin-top: 100px;
+       .itensDisplay{
+
+        max-width:250px;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Especifica 3 colunas com largura igual */
+        column-gap: 4rem;
+        row-gap: 7rem;
+
+        .ItemDadosSearch{
+         min-height: 370px;
+        border: 1px solid #E00056 ;
+        border-radius: 10px;
+            .contentDadosSearchImage{
+            height: 250px;
+            width: 250px;
+            border-radius: 10px;
+           }            
+           h1{
+                color: #E00056;
+                
+                margin-bottom: 10px;
+                
+              }      
+
+              p{
+                font-family: 'Roboto', sans-serif;
+                color: white;
+                margin-bottom: 10px;
+
+              }
+
+        }}
+    .lastDadosCalory{
+        text-align: center;
+        justify-content: center;
+        border-radius: 10px;
+        background-color: white;            
+        min-width: 200px;
+        max-width: 300px;
+        min-height: 90px;
+        margin: 0 auto;
+        margin-top: 200px;
+        margin-bottom: 100px;
+        box-shadow: 5px 5px 10px 2px rgba(255, 255, 255, 0.199);
+
+
+        h1{
+            padding-top: 15px;
+            color: black;
+        }
+}}}
 }
 }

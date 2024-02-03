@@ -1,0 +1,193 @@
+.containerFooter{
+background-image: url('../assets/white-round-empty-plate-dark-surface.jpg');
+width: 100%;
+height: 1000px;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+.contentFooter{
+    float: left;
+    background-color: #2b2f3149;
+    height: 500px;
+    width: 700px;
+    margin-top: 200px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    border-radius: 10px;
+
+    input{
+        all: initial;
+        border-bottom: 1px solid #E00056;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        margin-bottom: 50px;
+        margin-right: 40px;
+    }
+    input::placeholder{
+                color: white;
+                font-family: 'Roboto', sans-serif;
+
+    }
+
+    .inputBigFooter{
+        width: 525px;
+        color: white;
+    }
+    button{
+        all: initial;
+        background-color: none;
+        font-family: 'Playfair Display', serif;    
+        font-size: 20px;
+        border-bottom: 1px solid #E00056;
+        margin-top: 40px;
+        color: white;
+        width: 150px;
+        cursor: pointer;
+        margin-left: 200px;
+    }
+}
+ .FooterInfos{
+    float: right;
+    height: 500px;
+    width: 700px;
+    margin-top: 200px;
+    margin-right: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Especifica 3 colunas com largura igual */
+    column-gap: 4rem;
+    row-gap: 7rem;
+    
+    .infoFooter{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #2b2f3149;
+        height: 200px;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.452);
+
+        h2{
+            font-family: 'Playfair Display', serif;    
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+    }
+ }
+
+ @media (min-width: 1032px) and (max-width:1280px){
+
+    display: flex;
+    .contentFooter{
+        float: none;
+        background-color: #2b2f3149;
+        height: 500px;
+        width: 700px;
+        margin-top: 200px;
+        margin-left: 50px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        border-radius: 10px;
+        margin-right: 50px;
+    
+        input{
+            all: initial;
+            border-bottom: 1px solid #E00056;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            margin-bottom: 50px;
+            margin-right: 20px;
+        }
+       
+     }
+
+ }
+ @media (min-width: 768px) and (max-width:1023px){       
+    margin-top: 200px;
+    height: 1300px;
+    .contentFooter{
+        float: none;
+        background-color: #2b2f3149;
+        height: 500px;
+        width: 700px;
+        margin-left: 25px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        border-radius: 10px;
+        margin-right: 0px;
+    
+       
+     }
+     .FooterInfos{
+        float: none;
+        height: 500px;
+        width: 700px;
+        margin-top: 50px;
+        margin-right: 0px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Especifica 3 colunas com largura igual */
+        column-gap: 4rem;
+        row-gap: 7rem;
+        margin-left: 70px;
+        
+     }
+ }
+
+ @media (max-width:767px){
+    margin-top: 200px;
+    height: 1900px;
+    .contentFooter{
+        float: none;
+        background-color: #2b2f3149;
+        height: 500px;
+        width: 395px;
+        margin-left: 0px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        border-radius: 10px;
+        margin-right: 0px;
+      text-align: center;
+
+      
+    .inputBigFooter{
+        align-items: center;
+        text-align: start;
+        width: 350px;
+        color: white;
+    }
+    button{
+        all: initial;
+        background-color: none;
+        font-family: 'Playfair Display', serif;    
+        font-size: 20px;
+        border-bottom: 1px solid #E00056;
+        margin-top: 40px;
+        color: white;
+        width: 150px;
+        cursor: pointer;
+        margin-left: 0px;
+    }
+     }
+     .FooterInfos{
+        float: none;
+        height: 500px;
+        width: 700px;
+        margin-top: 50px;
+        margin-right: 0px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* Especifica 3 colunas com largura igual */
+        column-gap: 4rem;
+        row-gap: 7rem;
+        margin-left: 70px;
+        
+     }
+}
+}
